@@ -1,0 +1,4 @@
+= simple_form_for @article.comments.build, url: article_comments_path(@article) do |f|
+  = f.input :commentor
+  = f.input :body
+  = f.button :submit
