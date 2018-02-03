@@ -4,7 +4,7 @@ class Web::ArticlesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @article = articles(:draft)
   end
-  
+
   test 'should get index' do
     get articles_url
 
@@ -29,15 +29,12 @@ class Web::ArticlesControllerTest < ActionDispatch::IntegrationTest
     post articles_url, params: { article: article_attrs }
 
     assert_response :redirect
-
     assert { Article.exists? id: @article }
     assert { @article.draft? }
   end
 
   test 'should get edit' do
-    article = articles(:one)
-
-    get edit_article_url(article.id)
+    get edit_article_url(@article)
 
     assert_response :success
   end

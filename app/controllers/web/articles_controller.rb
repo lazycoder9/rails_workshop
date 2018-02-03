@@ -42,6 +42,13 @@ class Web::ArticlesController < Web::ApplicationController
     redirect_to articles_path
   end
 
+  def send_to_moderation
+    @article = Article.find(params[:id])
+    @article.send_to_moderation!
+
+    redirect_to @article
+  end
+
   private
 
   def article_params
