@@ -52,7 +52,7 @@ class Web::ArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy' do
-    delete article_url(@article.id)
+    delete article_url(@article)
     assert_response :redirect
 
     assert { !Article.exists? id: @article }
