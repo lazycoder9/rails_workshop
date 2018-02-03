@@ -1,13 +1,13 @@
-%p
-  %strong Title:
+p
+  strong Title:
   = @article.title
-%p
-  %strong Text:
+p
+  strong Text:
   = @article.text
-%h2 Comments
+h2 Comments
 = render partial: "web/articles/comments/comment", collection: @article.comments
-%h2 Add a comment:
+h2 Add a comment:
 = render 'web/articles/comments/form'
 = link_to 'Edit', edit_article_path(@article)
-|
+| \
 = link_to 'Back', articles_path

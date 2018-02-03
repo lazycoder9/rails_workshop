@@ -1,20 +1,20 @@
 = form_with model: @article, local: true do |form|
   - if @article.errors.any?
     #error_explanation
-      %h2
+      h2
         = pluralize(@article.errors.count, "error")
-        prohibited
-        this article from being saved:
-      %ul
+        | prohibited
+        | this article from being saved:
+      ul
         - @article.errors.full_messages.each do |msg|
-          %li= msg
-  %p
+          li= msg
+  p
     = form.label :title
-    %br/
+    br/
     = form.text_field :title
-  %p
+  p
     = form.label :text
-    %br/
+    br/
     = form.text_area :text
-  %p
+  p
     = form.submit
