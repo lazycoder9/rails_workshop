@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bootstrap', '~> 4.0.0'
+gem 'cocoon'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
@@ -16,9 +17,9 @@ gem 'ransack'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'slim'
+gem 'sqlite3'
 gem 'state_machines'
 gem 'state_machines-activerecord'
-gem 'sqlite3'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
