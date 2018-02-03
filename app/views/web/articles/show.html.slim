@@ -4,6 +4,8 @@ p
 p
   strong Text:
   = @article.text
+
+p= @article.state
 h2 Comments
 = render partial: "web/articles/comments/comment", collection: @article.comments
 h2 Add a comment:

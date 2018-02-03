@@ -10,6 +10,10 @@ Rails.application.routes.draw do
         resources :comments
       end
     end
+
+    namespace :moderation do
+      resources :articles, only: [:index, :show, :edit, :update]
+    end
   end
 
   root 'web/welcome#index'
