@@ -1,3 +1,3 @@
-class Web::ApplicationController < ActionController::Base
+class Web::ApplicationController < ApplicationController
   protect_from_forgery with: :exception
 end

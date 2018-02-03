@@ -1,3 +1,4 @@
 h1 Edit article
 = render 'form'
+= link_to 'Send to moderate', send_to_moderation_article_path, method: :patch
 = link_to 'Back', articles_path
