@@ -1,15 +1,13 @@
-h1 Articles:
+h1 Moderation:
 table.table
   tr
     th Title
     th Text
-  = link_to 'New article', new_article_path
+    th State
   - @articles.each do |article|
     tr
       td= article.title
       td= article.text
+      td= article.state
       td= link_to 'Show', article_path(article)
       td= link_to 'Edit', edit_article_path(article)
-      td= link_to 'Destroy', article_path(article), \
-          method: :delete,                          \
-          data: { confirm: 'Are you sure?' }
