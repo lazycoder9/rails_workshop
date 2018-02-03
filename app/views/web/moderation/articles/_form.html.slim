@@ -1,5 +1,4 @@
 = simple_form_for @article, url: moderation_article_path(@article)do |f|
-    = f.input :title
-    = f.input :text
     = f.association :category, collection: Article::Category.all, include_blank: true 
+    = f.input :state_event, as: :state_event
     = f.button :submit

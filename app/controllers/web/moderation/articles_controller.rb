@@ -20,7 +20,6 @@ class Web::Moderation::ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to moderation_article_url(@article)
     else
-      p @article.errors.inspect
       render 'edit'
     end
   end
@@ -28,6 +27,6 @@ class Web::Moderation::ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :text, :category_id, :state_event)
+    params.require(:article).permit(:category_id, :state_event)
   end
 end
