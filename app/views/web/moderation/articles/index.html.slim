@@ -1,13 +1,20 @@
 h1 Moderation:
+
+= search_form_for @q, url: moderation_articles_path do |f|
+    = f.label :state_eq
+    = f.select :state_eq, options_from_collection_for_select(Article.state_machine.states, 'name', 'human_name', params[:q] && params[:q][:state_eq]), include_blank: true
+
+    = f.submit
+
 table.table
   tr
-    th Title
-    th Text
-    th State
+    th= sort_link(@q, :title, default_order: :asc)
+    th= sort_link(@q, :text)
+    th= sort_link(@q, :state)
   - @articles.each do |article|
     tr
       td= article.title
       td= article.text
       td= article.state
-      td= link_to 'Show', article_path(article)
-      td= link_to 'Edit', edit_article_path(article)
+      td= link_to 'Show', moderation_article_path(article)
+      td= link_to 'Edit', edit_moderation_article_path(article)

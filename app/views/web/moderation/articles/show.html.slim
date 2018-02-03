@@ -1,0 +1,12 @@
+p
+  strong Title:
+  = @article.title
+p
+  strong Text:
+  = @article.text
+
+p= @article.state
+
+= link_to 'Edit', edit_moderation_article_path(@article)
+| \
+= link_to 'Back', moderation_articles_path

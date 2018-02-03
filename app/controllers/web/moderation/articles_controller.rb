@@ -1,6 +1,9 @@
 class Web::Moderation::ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    default = { state_eq: :on_moderate }
+    @q = Article.ransack(params[:q] || default)
+
+    @articles = @q.result
   end
 
   def show
