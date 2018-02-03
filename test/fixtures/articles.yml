@@ -1,9 +1,14 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+draft:
+  title: $LABEL
+  text: some text
+  state: draft
 
-one:
-  title: MyString
-  text: MyText
+published:
+  title: $LABEL
+  text: published text
+  state: published
 
-two:
-  title: MyString
-  text: MyText
+on_moderation:
+  title: $LABEL
+  text: text to moderate
+  state: on_moderation

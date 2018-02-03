@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Web::Articles::CommentsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @article = articles(:one)
+    @article = articles(:published)
     @comment = article_comments(:one)
   end
 

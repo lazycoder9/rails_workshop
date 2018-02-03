@@ -2,9 +2,9 @@ require 'test_helper'
 
 class Web::ArticlesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @article = articles(:one)
+    @article = articles(:draft)
   end
-
+  
   test 'should get index' do
     get articles_url
 
@@ -31,6 +31,7 @@ class Web::ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
 
     assert { Article.exists? id: @article }
+    assert { @article.draft? }
   end
 
   test 'should get edit' do
@@ -56,5 +57,12 @@ class Web::ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
 
     assert { !Article.exists? id: @article }
+  end
+
+  test 'should send to moderation' do
+    article = articles(:draft)
+    patch send_to_moderation_article_path(article)
+    assert_response :redirect
+    assert { article.reload.on_moderation? }
   end
 end

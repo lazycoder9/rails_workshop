@@ -3,7 +3,7 @@
 one:
   commentor: MyString
   body: MyText
-  article: one
+  article: published
 
 two:
   commentor: MyString
