@@ -1,65 +1,57 @@
 require 'test_helper'
 
 class Web::ArticlesControllerTest < ActionDispatch::IntegrationTest
-  def auth_headers
-    user = 'viraj'
-    pw = 'password'
-    {
-      'HTTP_AUTHORIZATION' =>
-      ActionController::HttpAuthentication::Basic.encode_credentials(user,pw)
-    }
+  setup do
+    @article = articles(:one)
   end
 
-  test "gets index" do
+  test 'should get index' do
     get articles_url
 
     assert_response :success
   end
 
-  test "gets show" do
-    article = articles(:one)
-
-    get article_url(article.id)
+  test 'shoult get show' do
+    get article_url(@article.id)
 
     assert_response :success
   end
 
-  test "gets new" do
-    get new_article_url, headers: auth_headers
+  test 'should get new' do
+    get new_article_url
 
     assert_response :success
   end
 
-  test "posts create" do
-    article_attrs = { title: 'title' }
+  test 'should create article' do
+    article_attrs = { title: @article.title, text: @article.text }
 
-    assert_difference('Article.count', 1) do
-      post articles_url, params: { article: article_attrs }, headers: auth_headers
-    end
+    post articles_url, params: { article: article_attrs }
+
+    assert_response :redirect
   end
 
-  test "gets edit" do
+  test 'should get edit' do
     article = articles(:one)
 
-    get edit_article_url(article.id), headers: auth_headers
+    get edit_article_url(article.id)
 
     assert_response :success
   end
 
-  test "patch update" do
-    article = articles(:one)
+  test 'should update' do
+    patch article_url(@article.id), params: { article: { title: 'new_title' } }
+    assert_response :redirect
 
-    patch article_url(article.id), params: { article: { title: 'new_title' } }, headers: auth_headers
+    @article.reload
 
-    updated_article = Article.find(article.id)
-    assert_equal(updated_article.title, 'new_title')
+    assert { @article.title == 'new_title' }
   end
 
-  test 'deteles destroy' do
-    article = articles(:one)
+  test 'should destroy' do
+    delete article_url(@article.id)
+    assert_response :redirect
 
-    assert_difference('Article.count', -1) do
-      delete article_url(article.id), headers: auth_headers
-    end
+    assert { !Article.exists? id: @article }
   end
 end
