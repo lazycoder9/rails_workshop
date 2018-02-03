@@ -42,12 +42,13 @@ class Web::ArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update' do
-    patch article_url(@article.id), params: { article: { title: 'new_title' } }
+    article_attrs = { title: 'new_title' }
+    patch article_url(@article.id), params: { article: article_attrs }
     assert_response :redirect
 
     @article.reload
 
-    assert { @article.title == 'new_title' }
+    assert { @article.title == article_attrs[:title] }
   end
 
   test 'should destroy' do
