@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :articles do
       member do
         patch :send_to_moderation
+        patch :publish
       end
       scope module: :articles do
         resources :comments

@@ -8,7 +8,7 @@ published:
   text: published text
   state: published
 
-on_moderation:
+on_moderate:
   title: $LABEL
   text: text to moderate
-  state: on_moderation
+  state: on_moderate

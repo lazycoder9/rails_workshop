@@ -10,11 +10,11 @@ class Article < ApplicationRecord
     state :published
 
     event :send_to_moderation do
-      transition draft: :on_moderation
+      transition draft: :on_moderate
     end
 
-    event :moderate do
-      transition on_moderation: :published
+    event :publish do
+      transition on_moderate: :published
     end
   end
 end

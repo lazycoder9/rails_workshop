@@ -49,6 +49,13 @@ class Web::ArticlesController < Web::ApplicationController
     redirect_to @article
   end
 
+  def publish
+    @article = Article.find(params[:id])
+    @article.publish!
+
+    redirect_to @article
+  end
+
   private
 
   def article_params
