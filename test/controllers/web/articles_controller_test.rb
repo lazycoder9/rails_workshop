@@ -29,6 +29,8 @@ class Web::ArticlesControllerTest < ActionDispatch::IntegrationTest
     post articles_url, params: { article: article_attrs }
 
     assert_response :redirect
+
+    assert { Article.exists? id: @article }
   end
 
   test 'should get edit' do

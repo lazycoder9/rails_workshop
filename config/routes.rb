@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope module: :web do
+  scope module: 'web' do
     get 'welcome/index'
     resources :articles do
       scope module: :articles do
