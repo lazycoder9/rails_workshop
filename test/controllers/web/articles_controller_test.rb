@@ -57,9 +57,11 @@ class Web::ArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should send to moderation' do
-    article = articles(:draft)
-    patch send_to_moderation_article_path(article)
+    patch send_to_moderation_article_path(@article)
     assert_response :redirect
-    assert { article.reload.on_moderate? }
+
+    @article.reload
+
+    assert { @article.on_moderate? }
   end
 end
