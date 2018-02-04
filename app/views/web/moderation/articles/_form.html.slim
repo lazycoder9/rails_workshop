@@ -1,4 +1,4 @@
-= simple_form_for @article, url: moderation_article_path(@article)do |f|
-    = f.association :category, collection: Article::Category.all, include_blank: true 
+= simple_form_for @article, url: moderation_article_path(@article) do |f|
+    = f.association :category, include_blank: true 
     = f.input :state_event, as: :state_event
     = f.button :submit
