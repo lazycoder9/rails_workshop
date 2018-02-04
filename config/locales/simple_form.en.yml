@@ -1,4 +1,6 @@
 en:
+  inputs:
+    current_state: 'Current state:'
   simple_form:
     "yes": 'Yes'
     "no": 'No'

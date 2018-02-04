@@ -1,0 +1,7 @@
+en:
+  activerecord:
+    state_machines:
+      article:
+        draft: 'Draft'
+        on_moderate: 'On moderate'
+        published: 'Published'
