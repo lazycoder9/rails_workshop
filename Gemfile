@@ -8,6 +8,7 @@ end
 gem 'bootstrap', '~> 4.0.0'
 gem 'cocoon'
 gem 'coffee-rails', '~> 4.2'
+gem 'dry-validation'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'minitest-power_assert'

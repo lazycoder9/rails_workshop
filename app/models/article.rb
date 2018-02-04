@@ -1,10 +1,12 @@
 class Article < ApplicationRecord
   has_many :comments, dependent: :destroy
+  has_many :likes, class_name: 'Comment::Like'
   has_many :links, inverse_of: :article, dependent: :destroy
   belongs_to :category, required: false
+
   accepts_nested_attributes_for :links, reject_if: :all_blank, allow_destroy: true
-  validates :title, presence: true,
-                    length: { minimum: 5 }
+
+  validates :title, presence: true, length: { minimum: 5 }
 
   state_machine :state, initial: :draft do
     state :draft
@@ -19,4 +21,6 @@ class Article < ApplicationRecord
       transition on_moderate: :published
     end
   end
+
+  include ArticleRepository
 end
