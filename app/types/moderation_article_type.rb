@@ -3,5 +3,5 @@ class ModerationArticleType < Article
 
   permit :category_id, :state_event
 
-  validates :category_id, presence: true
+  validates :category, presence: true
 end

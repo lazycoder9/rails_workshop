@@ -28,12 +28,14 @@ class Web::Moderation::ArticlesControllerTest < ActionDispatch::IntegrationTest
     params = {
       article: {
         state_event: 'publish',
-        category_id: @category
+        category_id: @category.id
       }
     }
 
     patch moderation_article_url(@article), params: params
 
-    assert { @article.reload.published? }
+    @article.reload
+
+    assert { @article.published? }
   end
 end
