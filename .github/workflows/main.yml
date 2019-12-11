@@ -12,12 +12,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:11.5
-        ports: ["5432:5432"]
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-
     steps:
     - uses: actions/checkout@v1
 
@@ -26,15 +20,11 @@ jobs:
       with:
         ruby-version: 2.6.x
 
-    - name: Install PostgreSQL 11 client
+    - name: Install SQLite
       run: |
-        sudo apt-get -yqq install libpq-dev
+        sudo apt-get install libsqlite3-dev
 
     - name: Build App
-      env:
-        PGHOST: localhost
-        PGUSER: postgres
-        RAILS_ENV: test
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
