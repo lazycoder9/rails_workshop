@@ -1,4 +1,4 @@
-me: Rails Tests
+name: Rails Tests
 
 on:
   pull_request:
