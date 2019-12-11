@@ -31,6 +31,5 @@ jobs:
         bin/rails db:setup
 
     - name: Run Tests
-        RAILS_ENV: test
       run: |
         bundle exec rake test
