@@ -6,3 +6,8 @@ start:
 
 guard:
 	bundle exec guard
+
+test:
+	bin/rails test
+
+.PHONY: test
